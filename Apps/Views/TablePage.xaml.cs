@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Inventory_System;
-
-/// <summary>
-/// Interaction logic for AppControll.xaml
-/// </summary>
-public partial class AppControll : Window
+namespace Inventory_System.Views
 {
-    public AppControll()
+    /// <summary>
+    /// Interaction logic for TablePage.xaml
+    /// </summary>
+    public partial class TablePage : Page
     {
-        InterComponent();
-    }
-
-    private void InterComponent()
-    {
-        Title = "Application";
-        WindowState = WindowState.Maximized;
+        public TablePage()
+        {
+            InitializeComponent();
+        }
     }
 }

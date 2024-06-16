@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Inventory_System"
              StartupUri="AppControll.xaml">
     <Application.Resources>
-         
+
     </Application.Resources>
 </Application>

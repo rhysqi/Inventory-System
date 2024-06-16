@@ -10,9 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Serilog" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
   </ItemGroup>
 
 </Project>
