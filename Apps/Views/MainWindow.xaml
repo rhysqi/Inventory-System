@@ -1,11 +1,12 @@
-﻿<Window x:Class="Inventory_System.AppControll"
+﻿<Window x:Class="Inventory_System.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Inventory_System"
-        Background="#ffff"
-        Height="450" Width="800">
+        xmlns:local="clr-namespace:Inventory_System.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -17,34 +18,24 @@
 
         <Menu Grid.Row="0">
             <MenuItem Header="File">
-                <MenuItem Header="Add">
-                    <MenuItem Header="File" Command="{Binding INewFile}"/>
+                <MenuItem Header="New">
                     <MenuItem Header="Schema" />
                 </MenuItem>
                 <MenuItem Header="Save" />
                 <MenuItem Header="Save As" />
                 <MenuItem Header="Open" />
                 <Separator/>
-                <MenuItem Header="Close Project" />
-                <MenuItem Header="Exit" />
-            </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Copy" />
-                <MenuItem Header="Cut" />
-                <MenuItem Header="Paste" />
-                <Separator/>
-                <MenuItem Header="Select All" />
+                <MenuItem Header="Close" />
+                <MenuItem Header="Exit" Command="{Binding FileExit}" />
             </MenuItem>
             <MenuItem Header="View">
-                <MenuItem Header="Schema" />
-                <MenuItem Header="Table" />
-                <MenuItem Header="Activity" />
+                <MenuItem Header="User" />
+                <MenuItem Header="History" />
             </MenuItem>
             <MenuItem Header="About">
                 <MenuItem Header="Help" />
                 <MenuItem Header="Info" />
             </MenuItem>
         </Menu>
-        
     </Grid>
 </Window>
