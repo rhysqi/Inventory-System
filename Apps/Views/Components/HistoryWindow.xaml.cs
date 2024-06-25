@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows;
-using Serilog.Data;
+﻿using System.Windows;
 using Inventory_System.Services;
 
 namespace Inventory_System.Views;
@@ -12,6 +10,12 @@ public partial class HistoryWindow : Window
 {
     public HistoryWindow()
     {
-        
+        InitializeComponent();
+        InterComponent();
+    }
+
+    private void InterComponent()
+    {
+        Title = "History";
     }
 }

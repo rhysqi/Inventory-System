@@ -3,7 +3,7 @@ using Inventory_System.Models;
 
 namespace Inventory_System.ViewModels;
 
-public class MainViewModels
+public class BaseViewModels
 {
     public class RelayCommand : ICommand
     {

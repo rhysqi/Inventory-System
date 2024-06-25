@@ -19,22 +19,22 @@
         <Menu Grid.Row="0">
             <MenuItem Header="File">
                 <MenuItem Header="New">
-                    <MenuItem Header="Schema" />
+                    <MenuItem Header="Schema" Command="{Binding FileNewSchema}" />
                 </MenuItem>
-                <MenuItem Header="Save" />
-                <MenuItem Header="Save As" />
-                <MenuItem Header="Open" />
+                <MenuItem Header="Save" Command="{Binding FileSave}" />
+                <MenuItem Header="Save As" Command="{Binding FileSaveAs}" />
+                <MenuItem Header="Open" Command="{Binding FileOpen}" />
                 <Separator/>
-                <MenuItem Header="Close" />
+                <MenuItem Header="Close" Command="{Binding FileClose}" />
                 <MenuItem Header="Exit" Command="{Binding FileExit}" />
             </MenuItem>
             <MenuItem Header="View">
-                <MenuItem Header="User" />
-                <MenuItem Header="History" />
+                <MenuItem Header="User" Command="{Binding ViewUser}" />
+                <MenuItem Header="History" Command="{Binding ViewHistory}" />
             </MenuItem>
             <MenuItem Header="About">
-                <MenuItem Header="Help" />
-                <MenuItem Header="Info" />
+                <MenuItem Header="Info" Command="{Binding AboutInfo}" />
+                <MenuItem Header="License" Command="{Binding AboutLicense}" />
             </MenuItem>
         </Menu>
     </Grid>
