@@ -1,11 +1,10 @@
 ﻿using System.Windows.Input;
-using Inventory_System.ViewModels;
 
 namespace Inventory_System.Models;
 
 public class MainWindowModels
 {
-    public ICommand? FileNew { get; set; }
+    public ICommand? FileNewSchema { get; set; }
     public ICommand? FileSave { get; set; }
     public ICommand? FileSaveAs { get; set; }
     public ICommand? FileOpen { get; set; }

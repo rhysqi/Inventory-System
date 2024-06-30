@@ -9,6 +9,8 @@
       Title="TablePage">
 
     <Grid>
-        <Label Content="Hello" />
+        <DataGrid Name="TableDataGrid">
+            
+        </DataGrid>
     </Grid>
 </Page>

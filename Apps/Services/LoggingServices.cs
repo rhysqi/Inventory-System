@@ -4,33 +4,25 @@ using System.IO;
 
 namespace Inventory_System.Services;
 
-internal partial class LoggingServices
+internal class LoggingServices
 {
-    private const string V = "";
+    private static readonly ILogger CreateLogger = CreateLog();
 
     public static void Logging(string Message)
     {
-        string DefaultLogFilePath = "./Data/Log.txt";
-
-        try
-        {
-            CreateLog(Message, DefaultLogFilePath);
-        }
-        catch (FileNotFoundException)
-        {
-            throw new FileNotFoundException("Error not found!");
-        }
+        CreateLog().Information(Message);
+        Log.CloseAndFlush();
     }
 
-    private static void CreateLog(string MsgData, string LogFilePath)
+    static ILogger CreateLog()
     {
-        var Logger = new LoggerConfiguration()
+        string LogFilePath = "./Data/Log.txt";
+        return new LoggerConfiguration()
             .MinimumLevel.Information()
             .WriteTo.File(LogFilePath,
-                outputTemplate: "Log {Timestamp:yyyy-MM-dd HH:mm:ss} {Message}{NewLine}{Exception}"
+                outputTemplate:
+                "Log: {Timestamp:yyyy-MM-dd HH:mm:ss} {Message}{NewLine}{Exception}"
             )
         .CreateLogger();
-
-        Logger.Information("{Timestamp}", MsgData);
     }
 }

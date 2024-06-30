@@ -1,4 +1,5 @@
-﻿using Inventory_System.ViewModels;
+﻿using Inventory_System.Services;
+using Inventory_System.ViewModels;
 using System.Windows;
 
 namespace Inventory_System.Views
@@ -17,10 +18,11 @@ namespace Inventory_System.Views
             DataContext = new MainWindowViewModels();
         }
 
-        internal void InternalComponent()
+        private void InternalComponent()
         {
             Title = DefaultTitle;
             WindowState = WindowState.Maximized;
+            LoggingServices.Logging("Opening Application");
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Inventory_System.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

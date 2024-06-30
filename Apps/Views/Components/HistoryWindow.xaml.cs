@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Inventory_System.Services;
 
 namespace Inventory_System.Views;
 
