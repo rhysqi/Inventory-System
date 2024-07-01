@@ -5,6 +5,9 @@ using Serilog;
 
 namespace Inventory_System.Services.Internal;
 
+/// <summary>
+/// Method for internal application services
+/// </summary>
 internal class InternalFileServices
 {
     public void ExecuteFileNewSchema(object parameter)
@@ -29,12 +32,36 @@ internal class InternalFileServices
 
     public void ExecuteFileSave(object parameter)
     {
-        Log.Information("Save Schema ");
+        SaveFileDialog dialog = new();
+
+        dialog.Title = "Save Schema";
+        dialog.Filter = "Sqlite files(*.db)|*.db";
+
+        dialog.AddExtension = true;
+        dialog.CheckFileExists = false;
+        dialog.FileName = "Schema";
+
+        if (dialog.ShowDialog() == true)
+        {
+            Log.Information("Save Schema " + dialog.FileName);
+        }
     }
 
     public void ExecuteFileSaveAs(object parameter)
     {
-        Log.Information("Save As Schema ");
+        SaveFileDialog dialog = new();
+
+        dialog.Title = "Save Schema";
+        dialog.Filter = "Sqlite files(*.db)|*.db";
+
+        dialog.AddExtension = true;
+        dialog.CheckFileExists = false;
+        dialog.FileName = "Schema";
+
+        if(dialog.ShowDialog() == true)
+        {
+            Log.Information("Save As Schema " + dialog.FileName);
+        }
     }
 
     public void ExecuteFileOpenAsync(object parameter)
@@ -53,7 +80,7 @@ internal class InternalFileServices
 
     public void ExecuteFileClose(object parameter)
     {
-        Log.Information("");
+        Log.Information("Closing Schema");
     }
 
     public void ExecuteFileExit(object parameter)

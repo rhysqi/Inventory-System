@@ -7,6 +7,9 @@ internal partial class DatabaseServices
 {
     public static async Task DbConnector(string DataName, bool Action)
     {
+        ///<summary>
+        /// Services for connecting to SQlite3
+        ///<summary>
         if (Action == true)
         {
             await SqliteConnect(DataName);

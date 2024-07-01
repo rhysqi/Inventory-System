@@ -21,9 +21,11 @@ public partial class App : Application
         bool createdNew;
         _mutex = new Mutex(true, UniqueMutexName, out createdNew);
 
+        ///<summary>
+        /// Check if application already running
+        ///<summary>
         if (!createdNew)
         {
-            // Check if application already running
             MessageBox.Show("Application already running.", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             Current.Shutdown();
             return;
@@ -31,28 +33,36 @@ public partial class App : Application
 
         base.OnStartup(e);
 
-        // Logging configuration
+        ///<summary>
+        /// Logging configuration
+        ///<summary>
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Information()
             .WriteTo.File("Data/Log.txt", rollingInterval: RollingInterval.Day, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
             .CreateLogger();
 
-        // Create Logging for starting application
+        ///<summary>
+        /// Create Logging for starting application
+        ///<summary>
         Log.Information("Application started");
     }
 
     protected override void OnExit(ExitEventArgs e)
     {
-        // Adding warning for close application
+        ///<summary>
+        /// Adding warning for close application
+        ///<summary>
         string MsgExit = "Are you sure want to close?";
         MessageBoxButton button = MessageBoxButton.YesNo;
 
         if (MessageBox.Show(MsgExit, "Exit Application", button, MessageBoxImage.Warning) == MessageBoxResult.Yes)
         {
-            Application.Current.Shutdown();
+            Current.Shutdown();
         }
 
-        // Logging for close application
+        ///<summary>
+        /// Logging for close application
+        ///<summary>
         Log.Information("Application exiting");
         Log.CloseAndFlush();
 
