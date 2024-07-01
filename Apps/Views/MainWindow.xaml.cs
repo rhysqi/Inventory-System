@@ -22,7 +22,6 @@ namespace Inventory_System.Views
         {
             Title = DefaultTitle;
             WindowState = WindowState.Maximized;
-            LoggingServices.Logging("Opening Application");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Serilog;
+using System.Windows;
 
 namespace Inventory_System.Services.Internal;
 
@@ -14,8 +15,9 @@ internal class InternalAboutServices
             "Version: v1.0a";
         string caption = "Info";
 
-        LoggingServices.Logging("Viewing Application Info");
         MessageBox.Show(message, caption, button);
+
+        Log.Information("Viewing Application Info");
     }
 
     public void ExecuteAboutLicense(object parameter)
@@ -41,6 +43,6 @@ internal class InternalAboutServices
 
         MessageBox.Show(message, caption, button);
 
-        LoggingServices.Logging("Viewing Application License");
+        Log.Information("Viewing License");
     }
 }

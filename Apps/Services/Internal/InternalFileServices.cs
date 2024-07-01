@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using Microsoft.Win32;
+using Serilog;
 
 namespace Inventory_System.Services.Internal;
 
@@ -22,18 +23,18 @@ internal class InternalFileServices
             File.WriteAllTextAsync(dialog.FileName, null);
 
             _ = DatabaseServices.DbConnector(dialog.FileName, true);
-            LoggingServices.Logging("Creating Schema " + dialog.FileName);
+            Log.Information("Creating Schema"  + dialog.FileName);
         }
     }
 
     public void ExecuteFileSave(object parameter)
     {
-        
+        Log.Information("Save Schema ");
     }
 
     public void ExecuteFileSaveAs(object parameter)
     {
-
+        Log.Information("Save As Schema ");
     }
 
     public void ExecuteFileOpenAsync(object parameter)
@@ -46,13 +47,13 @@ internal class InternalFileServices
         if (dialog.ShowDialog() != null)
         {
             _ = DatabaseServices.DbConnector(dialog.FileName, true);
-            LoggingServices.Logging("Opening Schema " + dialog.FileName);
+            Log.Information("Opening Schema " + dialog.FileName);
         }
     }
 
     public void ExecuteFileClose(object parameter)
     {
-        
+        Log.Information("");
     }
 
     public void ExecuteFileExit(object parameter)
@@ -62,7 +63,6 @@ internal class InternalFileServices
         
         if (MessageBox.Show(MsgExit, "Exit Application", button, MessageBoxImage.Warning) == MessageBoxResult.Yes)
         {
-            LoggingServices.Logging("Closing Application");
             Application.Current.Shutdown();
         }
     }
