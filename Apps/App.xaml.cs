@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using Inventory_System.Services;
+using Serilog;
 using System.Windows;
 
 namespace Inventory_System;
@@ -16,6 +17,8 @@ public partial class App : Application
     private string UniqueMutexName = ResourceAssembly.GetName().Name + ".exe";
     private Mutex _mutex;
 
+    LoggingServices log = new();
+
     protected override void OnStartup(StartupEventArgs e)
     {
         bool createdNew;
@@ -30,42 +33,14 @@ public partial class App : Application
             Current.Shutdown();
             return;
         }
+        log.CreateLog("Application Started");
 
         base.OnStartup(e);
-
-        ///<summary>
-        /// Logging configuration
-        ///<summary>
-        Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Information()
-            .WriteTo.File("Data/Log.txt", rollingInterval: RollingInterval.Day, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
-            .CreateLogger();
-
-        ///<summary>
-        /// Create Logging for starting application
-        ///<summary>
-        Log.Information("Application started");
     }
 
     protected override void OnExit(ExitEventArgs e)
     {
-        ///<summary>
-        /// Adding warning for close application
-        ///<summary>
-        string MsgExit = "Are you sure want to close?";
-        MessageBoxButton button = MessageBoxButton.YesNo;
-
-        if (MessageBox.Show(MsgExit, "Exit Application", button, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-        {
-            Current.Shutdown();
-        }
-
-        ///<summary>
-        /// Logging for close application
-        ///<summary>
-        Log.Information("Application exiting");
-        Log.CloseAndFlush();
-
+        log.CreateLog("Application Closed");
         base.OnExit(e);
     }
 }

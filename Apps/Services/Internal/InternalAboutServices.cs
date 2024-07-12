@@ -1,12 +1,11 @@
-﻿using Serilog;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Inventory_System.Services.Internal;
 
 internal class InternalAboutServices
 {
     MessageBoxButton button = MessageBoxButton.OK;
-
+    LoggingServices log = new();
     public void ExecuteAboutInfo(object parameter)
     {
         string message = 
@@ -17,7 +16,7 @@ internal class InternalAboutServices
 
         MessageBox.Show(message, caption, button);
 
-        Log.Information("Viewing Application Info");
+        log.CreateLog("Viewing Application Info");
     }
 
     public void ExecuteAboutLicense(object parameter)
@@ -43,6 +42,6 @@ internal class InternalAboutServices
 
         MessageBox.Show(message, caption, button);
 
-        Log.Information("Viewing License");
+        log.CreateLog("Viewing License");
     }
 }

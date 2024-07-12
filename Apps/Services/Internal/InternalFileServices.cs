@@ -1,7 +1,8 @@
 ﻿using System.IO;
 using System.Windows;
 using Microsoft.Win32;
-using Serilog;
+
+using Inventory_System.Services;
 
 namespace Inventory_System.Services.Internal;
 
@@ -10,6 +11,7 @@ namespace Inventory_System.Services.Internal;
 /// </summary>
 internal class InternalFileServices
 {
+    LoggingServices log = new();
     public void ExecuteFileNewSchema(object parameter)
     {
         SaveFileDialog dialog = new();
@@ -25,8 +27,9 @@ internal class InternalFileServices
         {
             File.WriteAllTextAsync(dialog.FileName, null);
 
-            _ = DatabaseServices.DbConnector(dialog.FileName, true);
-            Log.Information("Creating Schema"  + dialog.FileName);
+            Task DBTask = DatabaseServices.DbConnector(dialog.FileName, true);
+            
+            log.CreateLog("Creating Schema " + dialog.FileName);
         }
     }
 
@@ -43,7 +46,7 @@ internal class InternalFileServices
 
         if (dialog.ShowDialog() == true)
         {
-            Log.Information("Save Schema " + dialog.FileName);
+            log.CreateLog("Save Schema " + dialog.FileName);
         }
     }
 
@@ -60,7 +63,7 @@ internal class InternalFileServices
 
         if(dialog.ShowDialog() == true)
         {
-            Log.Information("Save As Schema " + dialog.FileName);
+            log.CreateLog("Save As Schema " + dialog.FileName);
         }
     }
 
@@ -74,13 +77,13 @@ internal class InternalFileServices
         if (dialog.ShowDialog() != null)
         {
             _ = DatabaseServices.DbConnector(dialog.FileName, true);
-            Log.Information("Opening Schema " + dialog.FileName);
+            log.CreateLog("Opening Schema " + dialog.FileName);
         }
     }
 
     public void ExecuteFileClose(object parameter)
     {
-        Log.Information("Closing Schema");
+        log.CreateLog("Closing Schema");
     }
 
     public void ExecuteFileExit(object parameter)
@@ -90,8 +93,8 @@ internal class InternalFileServices
         
         if (MessageBox.Show(MsgExit, "Exit Application", button, MessageBoxImage.Warning) == MessageBoxResult.Yes)
         {
+            log.CreateLog("Application exiting");
             Application.Current.Shutdown();
         }
     }
-
 }

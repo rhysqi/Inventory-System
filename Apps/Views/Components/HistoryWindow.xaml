@@ -6,15 +6,17 @@
         xmlns:local="clr-namespace:Inventory_System.Views"
         mc:Ignorable="d"
         Title="HistoryWindow" Height="450" Width="800">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Frame x:Name="HistoryContent" Grid.Row="0" Grid.Column="0" />
+        <ScrollViewer>
+            <TextBox x:Name="HistoryContent" IsEnabled="False" AcceptsReturn="True" IsReadOnly="True" />
+        </ScrollViewer>
     </Grid>
 </Window>

@@ -9,8 +9,6 @@
       Title="TablePage">
 
     <Grid>
-        <DataGrid Name="TableDataGrid">
-            
-        </DataGrid>
+        <DataGrid x:Name="TableDataGrid" />
     </Grid>
 </Page>
