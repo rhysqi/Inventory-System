@@ -1,18 +1,36 @@
-﻿using Inventory_System.Services.Internal;
-using System.Reflection.Emit;
-using System.Windows.Controls;
+﻿using Inventory_System.Services;
+using System.ComponentModel;
 
 namespace Inventory_System.ViewModels;
 
-internal class HistoryWindowViewModels : BaseViewModels
+internal class HistoryWindowViewModels : INotifyPropertyChanged
 {
-    InternalSystemServices SystemServices = new();
-
+    // History ViewModels
     public HistoryWindowViewModels()
     {
-        SystemServices.ReadFile("Data/Log.txt");
-        TextBlock LogTextBlock = new();
+        HistoryWindowServicess HistoryData = new();
+        historyText = HistoryData.RenderHistory();
+    }
 
-        LogTextBlock.Text = "string.Empty";
+    // property data flow
+    private string historyText;
+    public string HistoryText
+    {
+        get { return historyText; }
+        set
+        {
+            if (historyText != value)
+            {
+                historyText = value;
+                OnPropertyChanged(nameof(HistoryText));
+            }
+        }
+    }
+    
+    // Property changed method
+    public event PropertyChangedEventHandler PropertyChanged;
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

@@ -1,5 +1,4 @@
-﻿using Inventory_System.Services;
-using Inventory_System.ViewModels;
+﻿using Inventory_System.ViewModels;
 using System.Windows;
 
 namespace Inventory_System.Views

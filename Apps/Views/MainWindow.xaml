@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -37,5 +38,9 @@
                 <MenuItem Header="License" Command="{Binding AboutLicense}" />
             </MenuItem>
         </Menu>
+
+        <StackPanel Grid.Row="2" Height="auto">
+            <Button  />
+        </StackPanel>
     </Grid>
 </Window>

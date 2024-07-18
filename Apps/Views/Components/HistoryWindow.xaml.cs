@@ -1,6 +1,4 @@
 ﻿using Inventory_System.ViewModels;
-using Inventory_System.Services;
-
 using System.Windows;
 
 namespace Inventory_System.Views;
@@ -20,8 +18,5 @@ public partial class HistoryWindow : Window
     private void InterComponent()
     {
         Title = "History";
-        HistoryWindowServicess history = new();
-
-        HistoryContent.Text = history.RenderHistory();
     }
 }

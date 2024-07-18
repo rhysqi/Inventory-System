@@ -1,5 +1,4 @@
 ﻿using Inventory_System.Services;
-using Serilog;
 using System.Windows;
 
 namespace Inventory_System;
@@ -14,8 +13,8 @@ public partial class App : Application
         InitializeComponent();
     }
 
-    private string UniqueMutexName = ResourceAssembly.GetName().Name + ".exe";
     private Mutex _mutex;
+    private string UniqueMutexName = ResourceAssembly.GetName().Name + ".exe";
 
     LoggingServices log = new();
 

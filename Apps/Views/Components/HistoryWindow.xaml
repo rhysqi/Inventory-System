@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer>
-            <TextBox x:Name="HistoryContent" IsEnabled="False" AcceptsReturn="True" IsReadOnly="True" />
+            <TextBlock Text="{Binding HistoryText}" />
         </ScrollViewer>
     </Grid>
 </Window>

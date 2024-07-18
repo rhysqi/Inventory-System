@@ -12,20 +12,27 @@ internal class LoggingServices
 
     private static void LogTemplate(string LogMsg)
     {
-        string FilePath = "\\Data\\Log.txt";
+        string FilePath = ".\\Data\\Log.txt";
 
-        string path = Directory.GetCurrentDirectory() + FilePath;
+        string CurrentPath = Directory.GetCurrentDirectory() + FilePath;
 
         // Create Directory if not exist
-        if (!Directory.Exists("Data"))
+        if (!Directory.Exists("Data") || !File.Exists(FilePath))
         {
-            Directory.CreateDirectory("Data");
+            Directory.CreateDirectory(".\\Data");
+            File.WriteAllText(FilePath, null);
         }
+        WriteLog(CurrentPath, LogMsg);
+    }
 
+    private static void WriteLog(string CurrentPath, string LogMsg)
+    {
         // This text is always added, making the file longer over time
         // if it is not deleted.
         string appendText = DateLog() + LogMsg + Environment.NewLine;
-        File.AppendAllText(path, appendText, Encoding.UTF8);
+        string PrevFile = File.ReadAllText(CurrentPath, Encoding.UTF8);
+
+        File.WriteAllText(CurrentPath, appendText + PrevFile, Encoding.UTF8);
     }
 
     private static string DateLog()

@@ -17,11 +17,23 @@ internal class InternalViewServices
         log.CreateLog("Viewing User");
     }
 
+    private Mutex _mutex;
     public void ExecuteViewHistory(object parameter)
     {
         HistoryWindow Window = new();
+
+        string UniqueMutexName = Window.Title;
+        bool createNew;
+        _mutex = new Mutex(true, UniqueMutexName, out createNew);
+
+        if (!createNew)
+        {
+            MessageBox.Show("History Already Running.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            Window.Close();
+            return;
+        }
+
         Window.Show();
-        
         log.CreateLog("Viewing History");
     }
 }

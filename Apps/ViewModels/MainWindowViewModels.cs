@@ -1,5 +1,7 @@
 ﻿using Inventory_System.Models;
 using Inventory_System.Services.Internal;
+using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace Inventory_System.ViewModels;
 
@@ -25,5 +27,21 @@ public class MainWindowViewModels : MainWindowModels
         
         AboutInfo = new RelayCommand(InternalAbout.ExecuteAboutInfo);
         AboutLicense = new RelayCommand(InternalAbout.ExecuteAboutLicense);
+
+
+    }
+
+    private DataGrid datagrid;
+    public DataGrid DataGrid
+    {
+        get { return datagrid; }
+        set { datagrid = value; }
+    }
+
+    // Property changed method
+    public event PropertyChangedEventHandler PropertyChanged;
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
