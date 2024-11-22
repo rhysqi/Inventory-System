@@ -23,16 +23,45 @@ public partial class RoundButtonUserControl : UserControl
     public RoundButtonUserControl()
     {
         InitializeComponent();
+        DataContext = this;
     }
 
-    DependencyProperty TextProperty = 
+    public static readonly DependencyProperty TextContentProperty = 
         DependencyProperty.Register(
-            "Text", typeof(string),
+            "TextContent", typeof(string),
             typeof(RoundButtonUserControl),
             new PropertyMetadata(string.Empty));
 
-    public string Text
+    public string TextContent
     {
-        get; set;
+        get => (string)GetValue(TextContentProperty);
+        set => SetValue(TextContentProperty, value);
+    }
+
+    // Button Color property
+    public static readonly DependencyProperty ButtonColorProperty =
+        DependencyProperty.Register(
+            "ButtonColor", typeof(Brush),
+            typeof(RoundButtonUserControl),
+            new PropertyMetadata(Brushes.White));
+
+    public Brush ButtonColor
+    {
+        get => (Brush)GetValue(ButtonColorProperty);
+        set => SetValue(ButtonColorProperty, value);
+    }
+
+    // TextColor Property
+    public static readonly DependencyProperty TextColorProperty =
+        DependencyProperty.Register(
+            "TextColor",
+            typeof(Brush),
+            typeof(RoundButtonUserControl),
+            new PropertyMetadata(Brushes.Black));
+
+    public Brush TextColor
+    {
+        get => (Brush)GetValue(TextColorProperty);
+        set => SetValue(TextColorProperty, value);
     }
 }

@@ -7,8 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Button >
-            
+        <Button VerticalAlignment="Center" Margin="10" Padding="4"
+                Content="{Binding TextContent}" Background="{Binding ButtonColor}"
+                Foreground="{Binding TextColor}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
         </Button>
     </Grid>
 </UserControl>
