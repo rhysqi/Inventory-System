@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Apps.Views.UserControls;
 
@@ -23,10 +13,10 @@ public partial class RoundButtonUserControl : UserControl
     public RoundButtonUserControl()
     {
         InitializeComponent();
-        DataContext = this;
     }
 
-    public static readonly DependencyProperty TextContentProperty = 
+    // Text Content Property
+    private static readonly DependencyProperty TextContentProperty = 
         DependencyProperty.Register(
             "TextContent", typeof(string),
             typeof(RoundButtonUserControl),
@@ -39,7 +29,7 @@ public partial class RoundButtonUserControl : UserControl
     }
 
     // Button Color property
-    public static readonly DependencyProperty ButtonColorProperty =
+    private static readonly DependencyProperty ButtonColorProperty =
         DependencyProperty.Register(
             "ButtonColor", typeof(Brush),
             typeof(RoundButtonUserControl),
@@ -52,7 +42,7 @@ public partial class RoundButtonUserControl : UserControl
     }
 
     // TextColor Property
-    public static readonly DependencyProperty TextColorProperty =
+    private static readonly DependencyProperty TextColorProperty =
         DependencyProperty.Register(
             "TextColor",
             typeof(Brush),
@@ -63,5 +53,19 @@ public partial class RoundButtonUserControl : UserControl
     {
         get => (Brush)GetValue(TextColorProperty);
         set => SetValue(TextColorProperty, value);
+    }
+
+    // CommandInput Property
+    public static readonly DependencyProperty CommandInputPropperty =
+        DependencyProperty.Register(
+            "CommandInput",
+            typeof(ICommand),
+            typeof(RoundButtonUserControl),
+            new PropertyMetadata(null));
+
+    public ICommand CommandInput
+    {
+        get => (ICommand)GetValue(CommandInputPropperty);
+        set => SetValue(CommandInputPropperty, value);
     }
 }
