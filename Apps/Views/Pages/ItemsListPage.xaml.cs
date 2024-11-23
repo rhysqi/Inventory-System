@@ -13,16 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Apps.Views.Pages
+namespace Apps.Views.Pages;
+
+/// <summary>
+/// Interaction logic for ItemsListPage.xaml
+/// </summary>
+public partial class ItemsListPage : Page
 {
-    /// <summary>
-    /// Interaction logic for ItemsListPage.xaml
-    /// </summary>
-    public partial class ItemsListPage : Page
+    public ItemsListPage()
     {
-        public ItemsListPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -9,14 +9,6 @@
       Title="ItemsListPage">
 
     <Grid>
-        <Button>
-            <Button.Style>
-                <Style>
-                    <Style.Setters>
-                        
-                    </Style.Setters>
-                </Style>
-            </Button.Style>
-        </Button>
+        <Label Content="This is a Items List Page" />
     </Grid>
 </Page>

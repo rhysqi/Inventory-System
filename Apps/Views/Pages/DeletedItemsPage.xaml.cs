@@ -13,16 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Apps.Views.Pages
+namespace Apps.Views.Pages;
+
+/// <summary>
+/// Interaction logic for DeletedItemsPage.xaml
+/// </summary>
+public partial class DeletedItemsPage : Page
 {
-    /// <summary>
-    /// Interaction logic for DeletedItemsPage.xaml
-    /// </summary>
-    public partial class DeletedItemsPage : Page
+    public DeletedItemsPage()
     {
-        public DeletedItemsPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

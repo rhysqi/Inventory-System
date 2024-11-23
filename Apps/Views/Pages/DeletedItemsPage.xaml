@@ -9,6 +9,6 @@
       Title="DeletedItemsPage">
 
     <Grid>
-        
+        <Label Content="This is a Deleted Items Page" />
     </Grid>
 </Page>
