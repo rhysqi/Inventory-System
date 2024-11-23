@@ -4,20 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Apps"
-        xmlns:UserControl="clr-namespace:Apps.Views.UserControls"
+        xmlns:UserControls="clr-namespace:Apps.Views.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        MinHeight="350" MinWidth="450"
+        Title="Inventory System" Height="450" Width="800"
+        DataContext="MainWindowViewModel.cs">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="250" MinWidth="200" MaxWidth="300" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Rectangle Fill="#5C3FFF" Grid.Column="0" />
-        <StackPanel Orientation="Vertical">
-            <UserControl:RoundButtonUserControl />
+        <StackPanel>
+            <UserControls:RoundButtonUserControl CommandInput="{Binding ItemsListPage}"
+                TextContent="Items List" ButtonColor="#717171" TextColor="White" />
+            <UserControls:RoundButtonUserControl CommandInput="{Binding DeletedItemsPage}"
+                TextContent="Deleted Items" ButtonColor="#717171" TextColor="White" />
         </StackPanel>
-        
-        <Frame x:Name="MainPage" Grid.Column="1" />
+        <GridSplitter Grid.Column="0" Width="3" Background="Gray" />
+
+        <Frame x:Name="MainPage"
+               Grid.Column="1" NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>
