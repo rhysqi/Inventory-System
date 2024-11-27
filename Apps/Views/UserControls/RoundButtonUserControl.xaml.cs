@@ -15,6 +15,20 @@ public partial class RoundButtonUserControl : UserControl
         InitializeComponent();
     }
 
+    // CommandInput Property
+    public static readonly DependencyProperty CommandInputPropperty =
+        DependencyProperty.Register(
+            "CommandInput",
+            typeof(ICommand),
+            typeof(RoundButtonUserControl),
+            new PropertyMetadata(null));
+
+    public ICommand CommandInput
+    {
+        get => (ICommand)GetValue(CommandInputPropperty);
+        set => SetValue(CommandInputPropperty, value);
+    }
+
     // Text Content Property
     private static readonly DependencyProperty TextContentProperty = 
         DependencyProperty.Register(
@@ -55,17 +69,17 @@ public partial class RoundButtonUserControl : UserControl
         set => SetValue(TextColorProperty, value);
     }
 
-    // CommandInput Property
-    public static readonly DependencyProperty CommandInputPropperty =
+    // HeightInput Property
+    private static readonly DependencyProperty HeightInputProperty =
         DependencyProperty.Register(
-            "CommandInput",
-            typeof(ICommand),
+            "HeightInput",
+            typeof(double),
             typeof(RoundButtonUserControl),
-            new PropertyMetadata(null));
+            new PropertyMetadata(35.0));
 
-    public ICommand CommandInput
+    public double HeightInput
     {
-        get => (ICommand)GetValue(CommandInputPropperty);
-        set => SetValue(CommandInputPropperty, value);
+        get => (double)GetValue(HeightInputProperty);
+        set => SetValue(HeightInputProperty, value);
     }
 }

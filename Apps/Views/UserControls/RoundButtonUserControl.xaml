@@ -8,6 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="400">
     <Grid>
         <Button VerticalAlignment="Center" Margin="10" Padding="4"
+                Height="{Binding HeightInput, RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Command="{Binding CommandInput, RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Content="{Binding TextContent, RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Background="{Binding ButtonColor, RelativeSource={RelativeSource AncestorType=UserControl}}"

@@ -3,7 +3,7 @@ using Apps.ViewModels;
 using Apps.Views.Pages;
 using System.Windows;
 
-namespace Apps;
+namespace Apps.Views;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
