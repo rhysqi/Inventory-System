@@ -16,7 +16,9 @@
         </Grid.RowDefinitions>
         <Label Content="This is a Items List Page" />
 
-        <DataGrid Name="ItemslistGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False">
+        <DataGrid Name="ItemslistGrid" ItemsSource="{Binding Items}"
+                  AutoGenerateColumns="False" CanUserAddRows="True"
+                  RowEditEnding="DataGrid_RowEditing">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="50" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1.2*" />
@@ -26,15 +28,19 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid>
-                                <usercontrols:RoundButtonUserControl TextContent="Delete" ButtonColor="Red" HorizontalAlignment="Right" 
+                                <usercontrols:RoundButtonUserControl CommandInput="{Binding DataContext.DeleteItemCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                                                     CommandParameter="{Binding}"
+                                                                     TextContent="Delete" ButtonColor="Red" HorizontalAlignment="Right" 
                                                                      TextColor="White" Width="80" HeightInput="30"/>
                             </Grid>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                
             </DataGrid.Columns>
         </DataGrid>
-
+        
+        <usercontrols:RoundButtonUserControl CommandInput="{Binding DataContext.AddItemCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                             TextContent="Add" TextColor="White" ButtonColor="Gray"
+                                             Grid.Row="1" Width="80" HorizontalAlignment="Left"/>
     </Grid>
 </Page>

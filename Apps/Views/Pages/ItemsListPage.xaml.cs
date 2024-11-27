@@ -14,4 +14,23 @@ public partial class ItemsListPage : Page
         InitializeComponent();
         DataContext = new ItemsListViewModel();
     }
+
+    private bool _isHandlingRowEdit = false;
+    private void DataGrid_RowEditing(object sender, DataGridRowEditEndingEventArgs e)
+    {
+        var dataGrid = sender as DataGrid;
+
+        if (e.EditAction == DataGridEditAction.Commit)
+        {
+            var item = e.Row.Item as ItemsModel;
+            if (item != null)
+            {
+                var viewModel = DataContext as ItemsListViewModel;
+
+                // Send data to ViewModel
+                viewModel?.HandleRowEdit(item, dataGrid);
+            }
+        }
+    }
+
 }

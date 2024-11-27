@@ -10,6 +10,7 @@
         <Button VerticalAlignment="Center" Margin="10" Padding="4"
                 Height="{Binding HeightInput, RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Command="{Binding CommandInput, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                CommandParameter="{Binding CommandParameter, RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Content="{Binding TextContent, RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Background="{Binding ButtonColor, RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Foreground="{Binding TextColor, RelativeSource={RelativeSource AncestorType=UserControl}}">

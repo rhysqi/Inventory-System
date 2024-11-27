@@ -29,6 +29,20 @@ public partial class RoundButtonUserControl : UserControl
         set => SetValue(CommandInputPropperty, value);
     }
 
+    // Commandparameter Property
+    public static readonly DependencyProperty CommandParameterProperty =
+        DependencyProperty.Register(
+            "CommandParameter",
+            typeof(object),
+            typeof(RoundButtonUserControl),
+            new PropertyMetadata(null));
+
+    public object CommandParameter
+    {
+        get => GetValue(CommandParameterProperty);
+        set => SetValue(CommandParameterProperty, value);
+    }
+
     // Text Content Property
     private static readonly DependencyProperty TextContentProperty = 
         DependencyProperty.Register(
