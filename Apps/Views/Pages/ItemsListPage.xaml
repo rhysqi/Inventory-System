@@ -17,12 +17,13 @@
         <Label Content="This is a Items List Page" />
 
         <DataGrid Name="ItemslistGrid" ItemsSource="{Binding Items}"
-                  AutoGenerateColumns="False" CanUserAddRows="True"
+                  AutoGenerateColumns="False" CanUserAddRows="false"
                   RowEditEnding="DataGrid_RowEditing">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="50" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1.2*" />
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*" />
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="70" />
 
                 <DataGridTemplateColumn Header="Action" Width="80">
                     <DataGridTemplateColumn.CellTemplate>
@@ -39,7 +40,7 @@
             </DataGrid.Columns>
         </DataGrid>
         
-        <usercontrols:RoundButtonUserControl CommandInput="{Binding DataContext.AddItemCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+        <usercontrols:RoundButtonUserControl CommandInput="{Binding DataContext.AddNewItemCommand, RelativeSource={RelativeSource AncestorType=Page}}"
                                              TextContent="Add" TextColor="White" ButtonColor="Gray"
                                              Grid.Row="1" Width="80" HorizontalAlignment="Left"/>
     </Grid>

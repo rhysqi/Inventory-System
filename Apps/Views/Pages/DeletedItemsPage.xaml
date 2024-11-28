@@ -22,9 +22,9 @@
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="50" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1.2*" />
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*" />
-                <DataGridTextColumn Header="Deleted" Binding="{Binding IsDeleted}" Width="0.7*" />
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="70" />
 
-                <DataGridTextColumn Header="Expiration Date" Binding="{Binding DeletedDate, StringFormat=\{0:MM/dd/yyyy\}}" Width="*" />
+                <DataGridTextColumn Header="Expiration Date" Binding="{Binding DeletedDate, StringFormat=\{0:MM/dd/yyyy\}}" Width="150" />
 
                 <DataGridTemplateColumn Header="Action" Width="150">
                     <DataGridTemplateColumn.CellTemplate>
@@ -44,11 +44,12 @@
             </DataGrid.Columns>
         </DataGrid>
 
-            <usercontrols:RoundButtonUserControl TextContent="Delete All"
-                                                Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                                TextColor="White" ButtonColor="Red" Width="150" HeightInput="50.5" />
+            <usercontrols:RoundButtonUserControl CommandInput="{Binding DataContext.DeleteAllItemCommand, RelativeSource={RelativeSource AncestorType=Page}}" CommandParameter="{Binding}"
+                                                 TextContent="Delete All" 
+                                                 Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                                                 TextColor="White" ButtonColor="Red" Width="150" HeightInput="50.5" />
             
-            <usercontrols:RoundButtonUserControl CommandInput=""
+            <usercontrols:RoundButtonUserControl CommandInput="{Binding DataContext.RecoverAllItemCommand, RelativeSource={RelativeSource AncestorType=Page}}" CommandParameter="{Binding}"
                                                  TextContent="Recover All" 
                                                  Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
                                                  TextColor="White" ButtonColor="Green" Width="150" HeightInput="50.5" />

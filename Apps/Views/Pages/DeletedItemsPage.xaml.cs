@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
-using Apps.Models;
+using Apps.ViewModels.Pages;
 
 namespace Apps.Views.Pages;
 
@@ -12,6 +12,6 @@ public partial class DeletedItemsPage : Page
     public DeletedItemsPage()
     {
         InitializeComponent();
-        DataContext = new ViewModels.Pages.DeletedItemsViewModel();
+        DataContext = new DeletedItemsViewModel();
     }
 }
