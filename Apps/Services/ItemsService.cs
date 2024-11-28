@@ -1,11 +1,11 @@
 ﻿using Apps.Models;
 using Apps.Data;
-using System.Linq;
 
 namespace Apps.Services
 {
     internal class ItemsService
     {
+        // Read all data
         public IEnumerable<ItemsModel> GetAllItems()
         {
             using (var context = new AppDbContext())
@@ -15,6 +15,7 @@ namespace Apps.Services
             }
         }
 
+        // Update data service
         public void UpdateItem(ItemsModel model)
         {
             using (var context = new AppDbContext())
@@ -30,11 +31,22 @@ namespace Apps.Services
             }
         }
 
+        // Adding data service
         public void AddedItem(ItemsModel model)
         {
             using (var context = new AppDbContext())
             {
                 context.Items.Add(model);
+                context.SaveChanges();
+            }
+        }
+
+        // Delete data service
+        public void DeleteItem(ItemsModel model)
+        {
+            using (var context = new AppDbContext())
+            {
+                context.Remove(model);
                 context.SaveChanges();
             }
         }
