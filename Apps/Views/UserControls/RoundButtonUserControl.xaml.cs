@@ -96,4 +96,27 @@ public partial class RoundButtonUserControl : UserControl
         get => (double)GetValue(HeightInputProperty);
         set => SetValue(HeightInputProperty, value);
     }
+
+    // Click Property
+    // Define the Click event DependencyProperty
+    public static readonly DependencyProperty ClickEventProperty =
+        DependencyProperty.Register(
+            "ClickEvent",
+            typeof(RoutedEventHandler),
+            typeof(RoundButtonUserControl),
+            new PropertyMetadata(null));
+
+    // Provide a public property for the ClickEvent DependencyProperty
+    public RoutedEventHandler ClickEvent
+    {
+        get => (RoutedEventHandler)GetValue(ClickEventProperty);
+        set => SetValue(ClickEventProperty, value);
+    }
+
+    // Trigger the Click event handler
+    private void OnButtonClick(object sender, RoutedEventArgs e)
+    {
+        // Trigger the custom Click event handler if it's not null
+        ClickEvent?.Invoke(this, e);
+    }
 }
