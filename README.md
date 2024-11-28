@@ -1,7 +1,7 @@
 # Inventory-System
 Inventory system using C# .NET and sqlite3
 
-# Technology
+# Technologies
 - .NET 8
 - .NET WPF
 - .NET Entity Framework
