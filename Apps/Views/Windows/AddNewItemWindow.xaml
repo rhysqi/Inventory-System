@@ -1,0 +1,36 @@
+﻿<Window x:Class="Apps.Views.Windows.AddNewItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Apps.Views.Windows"
+        xmlns:usercontrols="clr-namespace:Apps.Views.UserControls"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Title="Add New Item" Height="300" Width="400">
+    <Grid Margin="10">
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Width="70" Text="Item ID:" Margin="5"/>
+                <TextBox Name="ItemIdTextBox" Width="200" Margin="5"/>
+            </WrapPanel>
+
+            <WrapPanel>
+                <TextBlock Width="70" Text="Item Name:" Margin="5"/>
+                <TextBox Name="ItemNameTextBox" Width="200" Margin="5"/>
+            </WrapPanel>
+
+            <WrapPanel>
+                <TextBlock Width="70" Text="Description:" Margin="5"/>
+                <TextBox Name="ItemDescriptionTextBox" Width="200" Margin="5"/>
+            </WrapPanel>
+
+            <WrapPanel>
+                <TextBlock Width="70" Text="Amount:" Margin="5"/>
+                <TextBox Name="ItemAmountTextBox" Width="200" Margin="5"/>
+            </WrapPanel>
+
+            <usercontrols:RoundButtonUserControl ClickEvent="AddItemButton_Click" TextContent="Add Item" ButtonColor="Green" TextColor="White" Width="100" />
+        </StackPanel>
+    </Grid>
+</Window>
